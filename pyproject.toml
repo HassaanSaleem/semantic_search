@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "semantic_search"
+version = "0.1.0"
+description = "Reusable semantic search over tabular metadata using Weaviate and sentence-transformers."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Syed Hassaan Saleem", email = "saleemhassaan94@gmail.com" }]
+requires-python = ">=3.11"
+keywords = ["semantic search", "weaviate", "sentence-transformers", "schema metadata"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "weaviate-client>=4.11",
+    "sentence-transformers>=2.2",
+    # Companion packages published as separate sibling repos (not on PyPI).
+    "sql_repository @ git+https://github.com/HassaanSaleem/sql_repository.git",
+    "events_repository @ git+https://github.com/HassaanSaleem/events_repository.git",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio"]
+
+[project.urls]
+Homepage = "https://github.com/HassaanSaleem/semantic_search"
+
+[tool.setuptools.packages.find]
+include = ["semantic_search*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
